@@ -1,0 +1,1000 @@
+nohup: ignoring input
+ * Serving Flask app 'webhook_listener'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.1.55:5000
+[33mPress CTRL+C to quit[0m
+172.16.1.1 - - [23/Apr/2026 20:59:00] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+changed: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+changed: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 20:59:56] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:00:48] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:01:35] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:02:19] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:02:58] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:04:57] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:05:52] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:06:52] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:07:41] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:07:53] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+changed: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:08:26] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+changed: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:08:52] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:09:38] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:09:53] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:10:26] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:10:35] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+172.16.1.1 - - [23/Apr/2026 21:11:09] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:11:20] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:12:03] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:12:31] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+changed: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:13:02] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+changed: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:14:26] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+172.16.1.1 - - [23/Apr/2026 21:15:01] "POST /trigger_mitigation HTTP/1.1" 200 -
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:15:49] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:16:09] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:16:33] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:17:21] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+172.16.1.1 - - [23/Apr/2026 21:18:02] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+172.16.1.1 - - [23/Apr/2026 21:18:37] "POST /trigger_mitigation HTTP/1.1" 200 -
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+172.16.1.1 - - [23/Apr/2026 21:19:13] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+172.16.1.1 - - [23/Apr/2026 21:19:50] "POST /trigger_mitigation HTTP/1.1" 200 -
+
+PLAY [Redirect Attacker to Honeypot] *******************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+ok: [172.16.1.1]
+
+TASK [NAT Redirection to Honeypot] *********************************************
+ok: [172.16.1.1]
+
+TASK [Ensure Traffic is allowed to Honeypot] ***********************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+PLAY [Block Attacker on Suricata] **********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [172.16.1.1]
+
+TASK [Remove Redirection Rule (Clean up)] **************************************
+ok: [172.16.1.1]
+
+TASK [Drop malicious traffic from attacker] ************************************
+ok: [172.16.1.1]
+
+PLAY RECAP *********************************************************************
+172.16.1.1                 : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

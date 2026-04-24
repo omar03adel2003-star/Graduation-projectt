@@ -1,0 +1,24 @@
+---
+- name: Redirect Attacker to Honeypot
+  hosts: suricata
+  become: yes
+  vars: 
+    honeypot_ip: "172.18.1.51"
+  tasks:
+    - name: NAT Redirection to Honeypot
+      ansible.builtin.iptables:
+        table: nat
+        chain: PREROUTING
+        protocol: tcp
+        source: "{{ target_ip }}"
+        jump: DNAT
+        to_destination: "{{ honeypot_ip }}"
+        action: insert
+
+    - name: Ensure Traffic is allowed to Honeypot
+      ansible.builtin.iptables:
+        chain: FORWARD
+        source: "{{ target_ip }}"
+        destination: "{{ honeypot_ip }}"
+        jump: ACCEPT
+        action: insert

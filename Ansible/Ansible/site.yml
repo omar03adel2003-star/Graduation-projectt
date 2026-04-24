@@ -1,0 +1,105 @@
+---
+- name: 1. Setup Honeypot Node
+  hosts: honeypot
+  become: yes
+  tasks:
+    - name: Install Docker
+      apt: 
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Run Cowrie
+      docker_container:
+        name: cowrie-container
+        image: cowrie/cowrie
+        state: started
+        restart_policy: always
+        ports: ["2222:2222"] 
+     
+    - name: Run Dionaea
+      docker_container: 
+        name: dionaea-all 
+        image: dinotools/dionaea
+        state: started
+        restart_policy: always
+        ports: ["80:80","21:21"]
+    
+
+- name: 2. Setup Suricata Node 
+  hosts: suricata 
+  become: yes
+  vars: 
+   local_script_path: "./log_exporter.py" 
+   local_model_path: "./model.pkl"
+   local_scaler_path: "./scaler.pkl"
+   suricata_log_path: "/var/log/suricata/eve.json"
+  tasks: 
+     - name: Install Dependencies
+       apt:
+         name: [python3-pip,docker.io]
+         state: present
+         update_cache: yes
+
+     - name: Install AI Libraries
+       pip: 
+         name:
+           - prometheus-client
+           - scikit-learn
+           - numpy
+           - pandas
+         extra_args: "--break-system-packages"
+
+     - name: Copy AI Model
+       copy: 
+         src: "{{local_model_path}}"
+         dest: "/opt/model.pkl"
+         mode: '0644'
+       ignore_errors: yes
+
+     - name: Copy AI scaler 
+       copy: 
+         src: "{{local_scaler_path}}"
+         dest: "/opt/scaler.pkl"
+         mode: '0644'
+       ignore_errors: yes 
+
+     - name: Copy Exporter Script
+       copy: 
+         src: "{{local_script_path}}"
+         dest: "/opt/log_exporter.py"
+         mode: '0755'
+
+  
+- name: 3. Setup Local Monitoring
+  hosts: localhost
+  connection: local
+  become: yes
+  tasks: 
+      - name: Install Docker on Localhost
+        apt: 
+          name: docker.io
+          state: present
+          update_cache: yes
+
+      - name: Run Prometheus 
+        docker_container:
+          name: prometheus_local
+          image: prom/prometheus
+          state: started
+          restart_policy: always  
+          ports: ["9090:9090"]
+          volumes: 
+             - "{{playbook_dir}}/prometheus.yml:/etc/prometheus/prometheus.yml"
+             - "prom_data:/prometheus"
+            
+      - name: Run Grafana 
+        docker_container:
+          name: grafana_local
+          image: grafana/grafana
+          state: started
+          user: "0:0" 
+          restart_policy: always
+          ports: ["3000:3000"]
+          volumes: 
+             - "grafana_data:/var/lib/grafana"

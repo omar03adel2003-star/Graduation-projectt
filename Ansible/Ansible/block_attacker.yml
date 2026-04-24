@@ -1,0 +1,23 @@
+---
+- name: Block Attacker on Suricata 
+  hosts : suricata
+  become: yes
+  vars:
+
+  tasks: 
+    - name: Remove Redirection Rule (Clean up)
+      iptables:
+        table: nat
+        chain: PREROUTING
+        protocol: tcp
+        source: "{{ target_ip }}"
+        jump: DNAT
+        state: absent
+
+
+    - name: Drop malicious traffic from attacker
+      iptables:
+        chain: INPUT
+        source: "{{ target_ip }}"
+        jump: DROP
+        action: insert
