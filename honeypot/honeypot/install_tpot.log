@@ -1,0 +1,48 @@
+2025-11-11 12:18:22,732 p=1458 u=sara n=ansible | PLAY [T-Pot - Bootstrapping Python] ********************************************************************************************
+2025-11-11 12:18:22,841 p=1458 u=sara n=ansible | TASK [Get distribution name (All)] *********************************************************************************************
+2025-11-11 12:18:23,091 p=1458 u=sara n=ansible | changed: [127.0.0.1]
+2025-11-11 12:18:23,098 p=1458 u=sara n=ansible | TASK [Check if python3 is installed (All)] *************************************************************************************
+2025-11-11 12:18:23,170 p=1458 u=sara n=ansible | changed: [127.0.0.1]
+2025-11-11 12:18:23,175 p=1458 u=sara n=ansible | TASK [Add python package (Debian, Raspbian, Ubuntu)] ***************************************************************************
+2025-11-11 12:18:23,461 p=1458 u=sara n=ansible | skipping: [127.0.0.1]
+2025-11-11 12:18:23,478 p=1458 u=sara n=ansible | PLAY [T-Pot - Abort if run as tpot, root or on unsupported distribution] *******************************************************
+2025-11-11 12:18:23,490 p=1458 u=sara n=ansible | TASK [Gathering Facts] *********************************************************************************************************
+2025-11-11 12:18:27,708 p=1458 u=sara n=ansible | ok: [127.0.0.1]
+2025-11-11 12:18:27,758 p=1458 u=sara n=ansible | TASK [Check if running as root (All)] ******************************************************************************************
+2025-11-11 12:18:27,809 p=1458 u=sara n=ansible | ok: [127.0.0.1] => {
+    "changed": false,
+    "msg": "Running as user: sara."
+}
+2025-11-11 12:18:27,824 p=1458 u=sara n=ansible | TASK [Check if running as tpot (All)] ******************************************************************************************
+2025-11-11 12:18:27,887 p=1458 u=sara n=ansible | ok: [127.0.0.1] => {
+    "changed": false,
+    "msg": "Running as user: sara."
+}
+2025-11-11 12:18:27,900 p=1458 u=sara n=ansible | TASK [Check if supported distribution (All)] ***********************************************************************************
+2025-11-11 12:18:27,954 p=1458 u=sara n=ansible | ok: [127.0.0.1] => {
+    "changed": false,
+    "msg": "T-Pot will now install on Ubuntu."
+}
+2025-11-11 12:18:28,006 p=1458 u=sara n=ansible | PLAY [T-Pot - Install recommended, remove conflicting packages] ****************************************************************
+2025-11-11 12:18:28,036 p=1458 u=sara n=ansible | TASK [Gathering Facts] *********************************************************************************************************
+2025-11-11 12:18:30,467 p=1458 u=sara n=ansible | ok: [127.0.0.1]
+2025-11-11 12:18:30,509 p=1458 u=sara n=ansible | TASK [Syncing clocks (All)] ****************************************************************************************************
+2025-11-11 12:18:31,632 p=1458 u=sara n=ansible | fatal: [127.0.0.1]: FAILED! => {"changed": true, "cmd": "hwclock --hctosys", "delta": "0:00:00.010453", "end": "2025-11-11 12:18:31.507631", "msg": "non-zero return code", "rc": 127, "start": "2025-11-11 12:18:31.497178", "stderr": "/bin/sh: 1: hwclock: not found", "stderr_lines": ["/bin/sh: 1: hwclock: not found"], "stdout": "", "stdout_lines": []}
+2025-11-11 12:18:31,634 p=1458 u=sara n=ansible | ...ignoring
+2025-11-11 12:18:31,652 p=1458 u=sara n=ansible | TASK [Install recommended packages (Debian, Raspbian, Ubuntu)] *****************************************************************
+2025-11-11 12:18:42,814 p=1458 u=sara n=ansible | ok: [127.0.0.1]
+2025-11-11 12:18:42,880 p=1458 u=sara n=ansible | PLAY [T-Pot - Prepare for and install Docker Engine] ***************************************************************************
+2025-11-11 12:18:42,899 p=1458 u=sara n=ansible | TASK [Gathering Facts] *********************************************************************************************************
+2025-11-11 12:18:45,123 p=1458 u=sara n=ansible | ok: [127.0.0.1]
+2025-11-11 12:18:45,181 p=1458 u=sara n=ansible | TASK [Remove distribution based Docker packages and podman-docker (AlmaLinux, Debian, Fedora, Raspbian, RHEL, Rocky, Ubuntu)] ***
+2025-11-11 12:18:51,697 p=1458 u=sara n=ansible | ok: [127.0.0.1]
+2025-11-11 12:18:51,712 p=1458 u=sara n=ansible | TASK [Add folder for Docker Engine GPG key (Debian, Raspbian, Ubuntu)] *********************************************************
+2025-11-11 12:18:53,090 p=1458 u=sara n=ansible | ok: [127.0.0.1]
+2025-11-11 12:18:53,136 p=1458 u=sara n=ansible | TASK [Download Docker Engine GPG key (Debian, Raspbian, Ubuntu)] ***************************************************************
+2025-11-11 12:18:55,580 p=1458 u=sara n=ansible | ok: [127.0.0.1]
+2025-11-11 12:18:55,599 p=1458 u=sara n=ansible | TASK [Decrypt Docker Engine GPG key (Debian, Raspbian, Ubuntu)] ****************************************************************
+2025-11-11 12:18:56,310 p=1458 u=sara n=ansible | ok: [127.0.0.1]
+2025-11-11 12:18:56,327 p=1458 u=sara n=ansible | TASK [Add Docker Engine repository (Debian, Raspbian, Ubuntu)] *****************************************************************
+2025-11-11 12:20:35,906 p=1458 u=sara n=ansible | fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Failed to update apt cache: unknown reason"}
+2025-11-11 12:20:35,915 p=1458 u=sara n=ansible | PLAY RECAP *********************************************************************************************************************
+2025-11-11 12:20:35,918 p=1458 u=sara n=ansible | 127.0.0.1                  : ok=14   changed=3    unreachable=0    failed=1    skipped=1    rescued=0    ignored=1   
