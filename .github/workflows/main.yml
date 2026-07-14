@@ -36,7 +36,7 @@ jobs:
       - name: "Install Ansible"
         run: pip install ansible
       - name: "Ansible Syntax Check"
-        working-directory: ./ansible
+        working-directory: ./Ansible
         run: |
           ansible-playbook site.yml --syntax-check
           ansible-playbook block_attacker.yml --syntax-check
