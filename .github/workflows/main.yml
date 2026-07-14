@@ -55,22 +55,18 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       
       - name: Slack Notification (Audit Summary)
         if: always()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_TITLE: "Project: AI-IDS DevSecOps 🛡️"
           SLACK_MESSAGE: |
             Audit Status: ${{ job.status }}
-            Project: AI-IDS DevSecOps 🛡️
-            Result: The security checks finished with status:
-            ${{ job.status }}
+            Result: The security checks finished with status: `${{ job.status }}`
             Action: Review logs if there are any failures.
           SLACK_COLOR: ${{ job.status }}
-          MSG_MINIMAL: false
-          SLACK_USERNAME: GitHub Bot
 
 # =========================================================================
 # 2️⃣ CD ZONE: Final Deployment
@@ -84,7 +80,5 @@ jobs:
       - name: "Checkout Code"
         uses: actions/checkout@v4
       - name: "Execute Playbook"
-        working-directory: ./Ansible 
+        working-directory: ./Ansible
         run: ansible-playbook -i inventory.ini site.yml
-
-
