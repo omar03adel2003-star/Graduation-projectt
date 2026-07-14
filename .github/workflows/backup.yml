@@ -1,0 +1,18 @@
+name: "Automated Daily Backup"
+on:
+  workflow_dispatch: # عشان تجرب دلوقتي من غير ما تستنى 
+jobs:
+  backup:
+    runs-on: self-hosted # عشان يستخدم جهازك اللي شايف السيرفر التاني
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create backup
+        run: tar -czvf project-backup.tar.gz ./ansible ./README.md
+      - name: Copy to Remote
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USERNAME }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          source: "project-backup.tar.gz"
+          target: "~/backups/"

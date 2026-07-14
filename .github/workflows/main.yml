@@ -1,0 +1,89 @@
+name: "DevSecOps Pipeline: AI-IDS & EVENG Automation"
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+# =========================================================================
+# 1️⃣ CI ZONE: Security Audit Stages
+# =========================================================================
+
+  Python-Security-Audit:
+    name: "Python Quality & Security Audit"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout Code"
+        uses: actions/checkout@v4
+      - name: "Set up Python"
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: "Install Tools"
+        run: pip install flake8 bandit pip-audit
+      - name: "Run Bandit SAST"
+        run: bandit -r . -ll -s B605,B104
+
+  Ansible-Validation:
+    name: "Ansible Syntax Check"
+    needs: Python-Security-Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout Code"
+        uses: actions/checkout@v4
+      - name: "Install Ansible"
+        run: pip install ansible
+      - name: "Ansible Syntax Check"
+        working-directory: ./ansible
+        run: |
+          ansible-playbook site.yml --syntax-check
+          ansible-playbook block_attacker.yml --syntax-check
+          ansible-playbook trap_attacker.yml --syntax-check
+
+  Secrets-Scanning:
+    name: "Gitleaks Secrets Scan"
+    needs: Ansible-Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout Code"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: "Run Gitleaks"
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # --- الرسالة الواحدة الملخصة لكل مراحل الـ Check ---
+      - name: Slack Notification (Audit Summary)
+        if: always()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_TITLE: "Project: AI-IDS DevSecOps 🛡️"
+          SLACK_MESSAGE: |
+            *Audit Status:* ${{ job.status }}
+            *Result:* All security checks (Python, Ansible, Gitleaks) finished with status: `${{ job.status }}`
+            *Action:* Review logs if there are any failures.
+          SLACK_COLOR: ${{ job.status }}
+          MSG_MINIMAL: true
+          SLACK_USERNAME: GitHub Bot
+
+# =========================================================================
+# 2️⃣ CD ZONE: Final Deployment
+# =========================================================================
+
+  Deploy-to-EvENg:
+    name: "Deploy to EVENg Environment"
+    needs: Secrets-Scanning
+    runs-on: self-hosted
+    steps:
+      - name: "Checkout Code"
+        uses: actions/checkout@v4
+      - name: "Execute Playbook"
+        working-directory: ./ansible 
+        run: ansible-playbook -i inventory.ini site.yml
+
+

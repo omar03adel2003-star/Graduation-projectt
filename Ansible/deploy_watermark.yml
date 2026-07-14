@@ -1,0 +1,59 @@
+---
+- name: Remote Deploy ShadowNetX v2+ Log Watermarking via Central Ansible
+  hosts: honeypots
+  become: yes
+  vars:
+    dest_path: "/home/sara"
+
+  tasks:
+    - name: 1. Stop and kill any existing python watermark processes on Honeypot
+      shell: "pkill -f watermarked_cowrie.py"
+      failed_when: false
+
+    - name: 2. Find the active Cowrie Docker JSON log file
+      shell: "find /var/lib/docker/volumes/ -name cowrie.json -exec ls -t {} + | head -n 1"
+      register: latest_log
+
+    - name: 3. Update the magical symlink on Honeypot
+      file:
+        src: "{{ latest_log.stdout }}"
+        dest: "{{ dest_path }}/live_cowrie.json"
+        state: link
+        force: yes
+      when: latest_log.stdout != ""
+
+    - name: 4. Copy Watermark Embedder Script from Ansible Node to Honeypot
+      copy:
+        src: ./watermarked_cowrie.py
+        dest: "{{ dest_path }}/watermarked_cowrie.py"
+        mode: '0755'
+
+    - name: 5. Copy Log Verifier Script from Ansible Node to Honeypot
+      copy:
+        src: ./verify_logs.py
+        dest: "{{ dest_path }}/verify_logs.py"
+        mode: '0755'
+
+    - name: 6. Create Systemd Service Configuration on Honeypot
+      copy:
+        dest: /etc/systemd/system/cowrie-watermark.service
+        content: |
+          [Unit]
+          Description=ShadowNetX Log Watermarking Service
+          After=network.target
+
+          [Service]
+          Type=simple
+          ExecStart=/usr/bin/python3 {{ dest_path }}/watermarked_cowrie.py
+          Restart=always
+          User=root
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: 7. Reload systemd, enable and start the service remotely
+      systemd:
+        name: cowrie-watermark
+        daemon_reload: yes
+        state: restarted
+        enabled: yes

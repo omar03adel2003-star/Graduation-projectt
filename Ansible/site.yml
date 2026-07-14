@@ -1,0 +1,106 @@
+---
+# ==========================================================
+# المرحلة 1: إعداد المراقبة والويب هوك (Ansible Node - Localhost)
+# ==========================================================
+- name: 1. Setup Local Monitoring & Webhook Listener
+  hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+    - name: Update APT cache
+      apt:
+        update_cache: yes
+      ignore_errors: yes
+
+    - name: Install Flask using APT (More stable for background tasks)
+      apt:
+        name: python3-flask
+        state: present
+
+    - name: Run Prometheus with Persistence
+      docker_container:
+        name: prometheus_local
+        image: prom/prometheus
+        state: started
+        restart_policy: always
+        ports: ["9090:9090"]
+        volumes:
+          - "/home/sara/grad-proj/prometheus.yml:/etc/prometheus/prometheus.yml"
+          - "prom_data:/prometheus"
+
+    - name: Run Grafana with Persistence
+      docker_container:
+        name: grafana_local
+        image: grafana/grafana
+        state: started
+        user: "0:0"
+        restart_policy: always
+        ports: ["3000:3000"]
+        volumes:
+          - "grafana_data:/var/lib/grafana"
+
+    - name: Start Webhook Listener (Persistent in Background)
+      # 1. sudo fuser: يغلق أي عملية قديمة تستخدم بورت 5000 لمنع التعارض
+      # 2. nohup: يضمن استمرار تشغيل البرنامج حتى بعد إغلاق الـ SSH/Terminal
+      # 3. async & poll: يخبر الأنسيبل بأن يشغل الأمر ولا ينتظر نهايته
+      shell: |
+        sudo fuser -k 5000/tcp || true
+        nohup python3 /home/sara/grad-proj/webhook_listener.py > /home/sara/grad-proj/webhook.log 2>&1 &
+      async: 60
+      poll: 0
+
+# ==========================================================
+# المرحلة 2: إعداد الـ Honeypot (المصيدة)
+# ==========================================================
+- name: 2. Setup Honeypot Node & Containers
+  hosts: honeypot
+  become: yes
+  tasks:
+    - name: Run Cowrie (SSH Honeypot)
+      docker_container:
+        name: cowrie-container
+        image: cowrie/cowrie
+        state: started
+        restart_policy: always
+        ports: ["2222:2222"]
+
+    - name: Run Dionaea (Multi-protocol Honeypot)
+      docker_container:
+        name: dionaea-all
+        image: dinotools/dionaea
+        state: started
+        restart_policy: always
+        ports: ["80:80", "21:21"]
+
+# ==========================================================
+# المرحلة 3: إعداد الـ Suricata وتشغيل الـ AI Log Exporter
+# ==========================================================
+- name: 3. Setup Suricata Node & AI Exporter
+  hosts: suricata
+  become: yes
+  tasks:
+    - name: Install System Dependencies
+      apt:
+        name: [python3-pip, docker.io]
+        state: present
+        update_cache: yes
+
+    - name: Install Python Libraries for AI
+      pip:
+        name: [prometheus-client, scikit-learn, numpy, pandas]
+        extra_args: "--break-system-packages"
+
+    - name: Copy AI Components (Model, Scaler, Script)
+      copy:
+        src: "{{ item }}"
+        dest: "/opt/{{ item }}"
+        mode: "0755"
+      loop:
+        - "model.pkl"
+        - "scaler.pkl"
+        - "log_exporter.py"
+
+    - name: Start AI Log Exporter (Background)
+      shell: "nohup python3 /opt/log_exporter.py > /var/log/ai_exporter.log 2>&1 &"
+      async: 60
+      poll: 0
